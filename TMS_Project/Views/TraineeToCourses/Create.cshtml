@@ -1,0 +1,23 @@
+﻿@model TMS_Project.ViewModels.TraineeToCourseViewModel
+@{
+	ViewBag.Title = "Create";
+}
+
+<h2>Assign Trainee to Course</h2>
+
+@using (Html.BeginForm("Create", "TraineeToCourses", FormMethod.Post))
+{
+	<div class="form-group">
+		@Html.LabelFor(m => m.Course.Name)
+		@Html.DropDownListFor(m => m.Course.Id
+		  , new SelectList(Model.Courses, "Id", "Name"),
+		  "Select Course",
+		  new { @class = "form-control" }
+		)
+	</div>
+
+	<div class="form-group">
+		@Html.DropDownList("Email", (IEnumerable<SelectListItem>)ViewBag.TraineeList, new { @class = "form-control" })
+	</div>
+	<button type="submit" class="btn btn-primary">Assign</button>
+}

@@ -1,0 +1,19 @@
+﻿@model TMS_Project.ViewModels.TraineeToCourseViewModel
+@{
+	ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+@Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+@using (Html.BeginForm("Edit", "TraineeToCourses", FormMethod.Post))
+{
+	<div class="form-group">
+		@Html.LabelFor(m => m.Course.Name)
+		@Html.DropDownListFor(m => m.Course.Id
+		   , new SelectList(Model.Courses, "Id", "Name"),
+		   "Select Course",
+		   new { @class = "form-control" })
+	</div>
+	<button type="submit" class="btn btn-primary">Edit</button>
+}
