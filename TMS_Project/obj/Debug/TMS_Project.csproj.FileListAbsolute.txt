@@ -108,3 +108,8 @@ C:\Users\Long Do\source\repos\TMS_Project\TMS_Project\obj\Debug\TMS_Project.dll
 C:\Users\Long Do\source\repos\TMS_Project\TMS_Project\obj\Debug\TMS_Project.pdb
 C:\Users\Long Do\source\repos\TMS_Project\TMS_Project\obj\Debug\TMS_Project.Migrations.InitDb.resources
 C:\Users\Long Do\source\repos\TMS_Project\TMS_Project\obj\Debug\TMS_Project.csproj.GenerateResource.cache
+C:\Users\Long Do\source\repos\TMS_Project\TMS_Project\obj\Debug\TMS_Project.Migrations.AddCategoryToDb.resources
+C:\Users\Long Do\source\repos\TMS_Project\TMS_Project\obj\Debug\TMS_Project.Migrations.AddCourseToDb.resources
+C:\Users\Long Do\source\repos\TMS_Project\TMS_Project\obj\Debug\TMS_Project.Migrations.AddCategoryIdToCourse.resources
+C:\Users\Long Do\source\repos\TMS_Project\TMS_Project\obj\Debug\TMS_Project.Migrations.AddTopicToDb.resources
+C:\Users\Long Do\source\repos\TMS_Project\TMS_Project\obj\Debug\TMS_Project.Migrations.AddCourseIdToTopic.resources

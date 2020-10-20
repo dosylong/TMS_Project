@@ -169,8 +169,11 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminsController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
+    <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\TopicsController.cs" />
     <Compile Include="Controllers\TrainingStaffsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -179,13 +182,38 @@
     <Compile Include="Migrations\202010191233561_InitDb.Designer.cs">
       <DependentUpon>202010191233561_InitDb.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010200917133_AddCategoryToDb.cs" />
+    <Compile Include="Migrations\202010200917133_AddCategoryToDb.Designer.cs">
+      <DependentUpon>202010200917133_AddCategoryToDb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010201510444_AddCourseToDb.cs" />
+    <Compile Include="Migrations\202010201510444_AddCourseToDb.Designer.cs">
+      <DependentUpon>202010201510444_AddCourseToDb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010201520093_AddCategoryIdToCourse.cs" />
+    <Compile Include="Migrations\202010201520093_AddCategoryIdToCourse.Designer.cs">
+      <DependentUpon>202010201520093_AddCategoryIdToCourse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010201528282_AddTopicToDb.cs" />
+    <Compile Include="Migrations\202010201528282_AddTopicToDb.Designer.cs">
+      <DependentUpon>202010201528282_AddTopicToDb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010201535317_AddCourseIdToTopic.cs" />
+    <Compile Include="Migrations\202010201535317_AddCourseIdToTopic.Designer.cs">
+      <DependentUpon>202010201535317_AddCourseIdToTopic.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Course.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Topic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\CourseCategoryViewModel.cs" />
+    <Compile Include="ViewModels\TopicCourseViewModel.cs" />
     <Compile Include="ViewModels\UserInRolesViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -248,6 +276,15 @@
     <Content Include="Views\Admins\Edit.cshtml" />
     <Content Include="Views\TrainingStaffs\Index.cshtml" />
     <Content Include="Views\TrainingStaffs\Edit.cshtml" />
+    <Content Include="Views\Categories\Index.cshtml" />
+    <Content Include="Views\Categories\Create.cshtml" />
+    <Content Include="Views\Categories\Edit.cshtml" />
+    <Content Include="Views\Courses\Index.cshtml" />
+    <Content Include="Views\Courses\Create.cshtml" />
+    <Content Include="Views\Courses\Edit.cshtml" />
+    <Content Include="Views\Topics\Index.cshtml" />
+    <Content Include="Views\Topics\Create.cshtml" />
+    <Content Include="Views\Topics\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -268,6 +305,21 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202010191233561_InitDb.resx">
       <DependentUpon>202010191233561_InitDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010200917133_AddCategoryToDb.resx">
+      <DependentUpon>202010200917133_AddCategoryToDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010201510444_AddCourseToDb.resx">
+      <DependentUpon>202010201510444_AddCourseToDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010201520093_AddCategoryIdToCourse.resx">
+      <DependentUpon>202010201520093_AddCategoryIdToCourse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010201528282_AddTopicToDb.resx">
+      <DependentUpon>202010201528282_AddTopicToDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010201535317_AddCourseIdToTopic.resx">
+      <DependentUpon>202010201535317_AddCourseIdToTopic.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
