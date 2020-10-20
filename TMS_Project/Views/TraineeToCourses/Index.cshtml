@@ -24,12 +24,15 @@
 
 <table class="table table-striped">
 	<tr>
-		<th>Id</th>
-		<th>Trainee Email</th>
-		<th>Trainee UserName</th>
-		<th>Course Name</th>
-		<th>Edit</th>
-		<th>Delete</th>
+			<th>Id</th>
+			<th>Trainee Email</th>
+			<th>Trainee UserName</th>
+			<th>Course Name</th>
+			@if (Request.IsAuthenticated && User.IsInRole("TrainingStaff"))
+			{
+				<th>Edit</th>
+				<th>Delete</th>
+			}
 
 	</tr>
 	@foreach (var trainee in Model)

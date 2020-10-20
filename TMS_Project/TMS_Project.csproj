@@ -216,6 +216,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Topic.cs" />
     <Compile Include="Models\TraineeToCourse.cs" />
+    <Compile Include="Models\TrainerToTopic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CourseCategoryViewModel.cs" />
