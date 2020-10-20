@@ -174,6 +174,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\TopicsController.cs" />
+    <Compile Include="Controllers\TraineeToCoursesController.cs" />
     <Compile Include="Controllers\TrainingStaffsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -202,6 +203,10 @@
     <Compile Include="Migrations\202010201535317_AddCourseIdToTopic.Designer.cs">
       <DependentUpon>202010201535317_AddCourseIdToTopic.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010201604494_AddTraineeToCourse.cs" />
+    <Compile Include="Migrations\202010201604494_AddTraineeToCourse.Designer.cs">
+      <DependentUpon>202010201604494_AddTraineeToCourse.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -210,10 +215,12 @@
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Topic.cs" />
+    <Compile Include="Models\TraineeToCourse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CourseCategoryViewModel.cs" />
     <Compile Include="ViewModels\TopicCourseViewModel.cs" />
+    <Compile Include="ViewModels\TraineeToCourseViewModel.cs" />
     <Compile Include="ViewModels\UserInRolesViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -221,10 +228,12 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap2.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="image\help_teams.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -288,6 +297,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="javascript\" />
+    <Folder Include="Views\TraineeToCourses\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -320,6 +331,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010201535317_AddCourseIdToTopic.resx">
       <DependentUpon>202010201535317_AddCourseIdToTopic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010201604494_AddTraineeToCourse.resx">
+      <DependentUpon>202010201604494_AddTraineeToCourse.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
