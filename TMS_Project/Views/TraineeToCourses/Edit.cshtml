@@ -9,8 +9,8 @@
 @using (Html.BeginForm("Edit", "TraineeToCourses", FormMethod.Post))
 {
 	<div class="form-group">
-		@Html.LabelFor(m => m.Course.Name)
-		@Html.DropDownListFor(m => m.Course.Id
+		@Html.LabelFor(tr => tr.TraineeToCourse.Course.Name)
+		@Html.DropDownListFor(tr => tr.TraineeToCourse.CourseId
 		   , new SelectList(Model.Courses, "Id", "Name"),
 		   "Select Course",
 		   new { @class = "form-control" })

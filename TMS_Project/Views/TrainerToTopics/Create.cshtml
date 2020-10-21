@@ -1,0 +1,29 @@
+﻿@model TMS_Project.ViewModels.TrainerToTopicViewModel
+@{
+	ViewBag.Title = "Create";
+}
+
+<h2>Assign Trainer to Topic</h2>
+
+@using (Html.BeginForm("Create", "TrainerToTopics", FormMethod.Post))
+{
+	<div class="form-group">
+		@Html.LabelFor(tr => tr.TrainerToTopic.TrainerId)
+		@Html.DropDownListFor(tr => tr.TrainerToTopic.TrainerId
+		  , new SelectList(Model.Trainers, "Id", "Email"),
+		  "Select Trainer",
+		  new { @class = "form-control" }
+		)
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(tr => tr.TrainerToTopic.Topic.Name)
+		@Html.DropDownListFor(tr => tr.TrainerToTopic.TopicId
+		  , new SelectList(Model.Topics, "Id", "Name"),
+		  "Select Topic",
+		  new { @class = "form-control" }
+		)
+	</div>
+
+	<button type="submit" class="btn btn-primary">Assign</button>
+}

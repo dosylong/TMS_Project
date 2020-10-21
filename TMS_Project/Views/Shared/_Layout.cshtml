@@ -26,6 +26,7 @@
 					<li>@Html.ActionLink("Course", "Index", "Courses")</li>
 					<li>@Html.ActionLink("Topic", "Index", "Topics")</li>
 					<li>@Html.ActionLink("Trainee", "Index", "TraineeToCourses")</li>
+					<li>@Html.ActionLink("Trainer", "Index", "TrainerToTopics")</li>
 
 					@if (Request.IsAuthenticated && User.IsInRole("Admin"))
 					{

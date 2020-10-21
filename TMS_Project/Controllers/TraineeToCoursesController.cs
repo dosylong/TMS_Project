@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web.Mvc;
 using TMS_Project.Models;
@@ -63,7 +64,7 @@ namespace TMS_Project.Controllers
 		[HttpGet]
 		public ActionResult Delete(int id)
 		{
-			var traineeInDb = _context.TraineeToCourses.SingleOrDefault(tr => tr.Id == id);
+			var traineeInDb = _context.TraineeToCourses.SingleOrDefault(trdb => trdb.Id == id);
 			if (traineeInDb == null)
 			{
 				return HttpNotFound();
@@ -77,7 +78,8 @@ namespace TMS_Project.Controllers
 		[HttpGet]
 		public ActionResult Edit(int id)
 		{
-			var traineeInDb = _context.TraineeToCourses.SingleOrDefault(tr => tr.Id == id);
+			var traineeInDb = _context.TraineeToCourses.SingleOrDefault(trdb => trdb.Id == id);
+
 			if (traineeInDb == null)
 			{
 				return HttpNotFound();
@@ -85,7 +87,8 @@ namespace TMS_Project.Controllers
 
 			var viewModel = new TraineeToCourseViewModel
 			{
-				Courses = _context.Courses.ToList()
+				TraineeToCourse = traineeInDb,
+				Courses = _context.Courses.ToList(),
 			};
 
 			return View(viewModel);
@@ -94,19 +97,14 @@ namespace TMS_Project.Controllers
 		[HttpPost]
 		public ActionResult Edit(TraineeToCourse traineeToCourse)
 		{
-			if (!ModelState.IsValid)
-			{
-				return View();
-			}
+			var traineeInDb = _context.TraineeToCourses.SingleOrDefault(trdb => trdb.Id == traineeToCourse.Id);
 
-			var traineeInDb = _context.TraineeToCourses.SingleOrDefault(tr => tr.Id == traineeToCourse.Id);
 			if (traineeInDb == null)
 			{
 				return HttpNotFound();
 			}
 
-			traineeInDb.Course.Id = traineeToCourse.Course.Id;
-			traineeInDb.Course.Name = traineeToCourse.Course.Name;
+			traineeInDb.CourseId = traineeToCourse.CourseId;
 
 			_context.SaveChanges();
 			return RedirectToAction("Index");

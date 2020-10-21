@@ -114,3 +114,4 @@ C:\Users\Long Do\source\repos\TMS_Project\TMS_Project\obj\Debug\TMS_Project.Migr
 C:\Users\Long Do\source\repos\TMS_Project\TMS_Project\obj\Debug\TMS_Project.Migrations.AddTopicToDb.resources
 C:\Users\Long Do\source\repos\TMS_Project\TMS_Project\obj\Debug\TMS_Project.Migrations.AddCourseIdToTopic.resources
 C:\Users\Long Do\source\repos\TMS_Project\TMS_Project\obj\Debug\TMS_Project.Migrations.AddTraineeToCourse.resources
+C:\Users\Long Do\source\repos\TMS_Project\TMS_Project\obj\Debug\TMS_Project.Migrations.AddTrainerToTopic.resources

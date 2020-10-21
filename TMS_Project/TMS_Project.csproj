@@ -175,6 +175,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\TopicsController.cs" />
     <Compile Include="Controllers\TraineeToCoursesController.cs" />
+    <Compile Include="Controllers\TrainerToTopicsController.cs" />
     <Compile Include="Controllers\TrainingStaffsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -207,6 +208,10 @@
     <Compile Include="Migrations\202010201604494_AddTraineeToCourse.Designer.cs">
       <DependentUpon>202010201604494_AddTraineeToCourse.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010211147355_AddTrainerToTopic.cs" />
+    <Compile Include="Migrations\202010211147355_AddTrainerToTopic.Designer.cs">
+      <DependentUpon>202010211147355_AddTrainerToTopic.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -222,6 +227,7 @@
     <Compile Include="ViewModels\CourseCategoryViewModel.cs" />
     <Compile Include="ViewModels\TopicCourseViewModel.cs" />
     <Compile Include="ViewModels\TraineeToCourseViewModel.cs" />
+    <Compile Include="ViewModels\TrainerToTopicViewModel.cs" />
     <Compile Include="ViewModels\UserInRolesViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -298,6 +304,8 @@
     <Content Include="Views\TraineeToCourses\Index.cshtml" />
     <Content Include="Views\TraineeToCourses\Create.cshtml" />
     <Content Include="Views\TraineeToCourses\Edit.cshtml" />
+    <Content Include="Views\TrainerToTopics\Index.cshtml" />
+    <Content Include="Views\TrainerToTopics\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -336,6 +344,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010201604494_AddTraineeToCourse.resx">
       <DependentUpon>202010201604494_AddTraineeToCourse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010211147355_AddTrainerToTopic.resx">
+      <DependentUpon>202010211147355_AddTrainerToTopic.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
