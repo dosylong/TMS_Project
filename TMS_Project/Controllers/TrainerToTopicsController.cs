@@ -18,7 +18,7 @@ namespace TMS_Project.Controllers
 		}
 
 		[HttpGet]
-		// GET: TraineeToCourses
+		// GET: TrainerToTopics
 		public ActionResult Index(string searchTrainer)
 		{
 			var trainertotopicss = _context.TrainerToTopics

@@ -1,0 +1,51 @@
+﻿@model TMS_Project.Models.TraineeProfile
+@{
+	ViewBag.Title = "Edit";
+}
+
+<h2>Edit Trainee Profile</h2>
+
+@using (Html.BeginForm("Edit", "TraineeProfiles", FormMethod.Post))
+{
+	<div class="form-group">
+		@Html.LabelFor(tp => tp.TraineeId)
+		@Html.DropDownListFor(tp => tp.TraineeId
+		  , new SelectList(Model.Trainees, "Id", "Email"),
+		  "Select Trainee",
+		  new { @class = "form-control" }
+		)
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(tp => tp.Full_Name)
+		@Html.TextBoxFor(tp => tp.Full_Name, new { @class = "form-control" })
+		@Html.ValidationMessageFor(tp => tp.Full_Name)
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(tp => tp.Education)
+		@Html.TextBoxFor(tp => tp.Education, new { @class = "form-control" })
+		@Html.ValidationMessageFor(tp => tp.Education)
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(tp => tp.Programming_Language)
+		@Html.TextBoxFor(tp => tp.Programming_Language, new { @class = "form-control" })
+		@Html.ValidationMessageFor(tp => tp.Programming_Language)
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(tp => tp.Experience_Details)
+		@Html.TextBoxFor(tp => tp.Experience_Details, new { @class = "form-control" })
+		@Html.ValidationMessageFor(tp => tp.Experience_Details)
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(tp => tp.Location)
+		@Html.TextBoxFor(tp => tp.Location, new { @class = "form-control" })
+		@Html.ValidationMessageFor(tp => tp.Location)
+	</div>
+
+	<button type="submit" class="btn btn-primary">Edit</button>
+}
+

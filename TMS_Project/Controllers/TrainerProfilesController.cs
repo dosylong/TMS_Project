@@ -107,8 +107,18 @@ namespace TMS_Project.Controllers
 			trainerProfileInDb.Education = trainerProfile.Education;
 			trainerProfileInDb.Working_Place = trainerProfile.Working_Place;
 			trainerProfileInDb.Phone_Number = trainerProfile.Phone_Number;
-
 			_context.SaveChanges();
+
+			if (User.IsInRole("TrainingStaff"))
+			{
+				return RedirectToAction("Index");
+			}
+
+			if (User.IsInRole("Trainer"))
+			{
+				return RedirectToAction("Mine");
+			}
+
 			return RedirectToAction("Index");
 		}
 

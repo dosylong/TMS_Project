@@ -1,0 +1,32 @@
+﻿@model IEnumerable<TMS_Project.Models.TraineeProfile>
+@{
+    ViewBag.Title = "Mine";
+}
+
+<h2>My Profile</h2>
+
+<table class="table table-striped">
+	<tr>
+		<th>Trainee Id</th>
+		<th>Trainee Email</th>
+		<th>Trainee UserName</th>
+		<th>Full Name</th>
+		<th>Education</th>
+		<th>Programming Language</th>
+		<th>Experience Details</th>
+		<th>Location</th>
+	</tr>
+	@foreach (var trainee in Model)
+	{
+		<tr>
+			<th>@trainee.Id</th>
+			<th>@trainee.Trainee.Email</th>
+			<th>@trainee.Trainee.UserName</th>
+			<th>@trainee.Full_Name</th>
+			<th>@trainee.Education</th>
+			<th>@trainee.Programming_Language</th>
+			<th>@trainee.Experience_Details</th>
+			<th>@trainee.Location</th>
+		</tr>
+	}
+</table>
