@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Data.Entity;
-using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web.Mvc;
 using TMS_Project.Models;
@@ -108,6 +108,21 @@ namespace TMS_Project.Controllers
 
 			_context.SaveChanges();
 			return RedirectToAction("Index");
+		}
+
+		[HttpGet]
+		[Authorize(Roles = "Trainee")]
+		public ActionResult Mine()
+		{
+			var userId = User.Identity.GetUserId();
+
+			var traineeToCourses = _context.TraineeToCourses
+				.Where(c => c.TraineeId == userId)
+				.Include(c => c.Course)
+				.Include(c => c.Trainee)
+				.ToList();
+
+			return View(traineeToCourses);
 		}
 	}
 }

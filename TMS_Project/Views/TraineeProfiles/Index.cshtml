@@ -1,0 +1,60 @@
+﻿@model IEnumerable<TMS_Project.Models.TraineeProfile>
+@{
+	ViewBag.Title = "Index";
+}
+
+<h2>Trainee Profile</h2>
+
+@using (Html.BeginForm("Index", "TraineeProfiles", FormMethod.Get))
+{
+	<p>
+		<input type="search" placeholder="Enter Trainee Email or UserName"
+			   name="searchTraineeProfile" style="width:225px; height:33px;" />
+
+		<input type="submit" value="Search" class="btn btn-primary" />
+
+		@Html.ActionLink("View all Trainee", "Index", "TraineeProfiles")
+	</p>
+}
+
+@if (Request.IsAuthenticated && User.IsInRole("TrainingStaff"))
+{
+	@Html.ActionLink("Add Trainee Profile", "Create")
+}
+
+<table class="table table-striped">
+	<tr>
+		<th>Id</th>
+		<th>Trainee Email</th>
+		<th>Trainee UserName</th>
+		<th>Trainee FullName</th>
+		<th>Education</th>
+		<th>Programming Language</th>
+		<th>Experience Details</th>
+		<th>Location</th>
+		@if (Request.IsAuthenticated && User.IsInRole("TrainingStaff"))
+		{
+			<th>Edit</th>
+			<th>Delete</th>
+		}
+
+	</tr>
+	@foreach (var trainee in Model)
+	{
+		<tr>
+			<th>@trainee.Id</th>
+			<th>@trainee.Trainee.Email</th>
+			<th>@trainee.Trainee.UserName</th>
+			<th>@trainee.Full_Name</th>
+			<th>@trainee.Education</th>
+			<th>@trainee.Programming_Language</th>
+			<th>@trainee.Experience_Details</th>
+			<th>@trainee.Location</th>
+			@if (Request.IsAuthenticated && User.IsInRole("TrainingStaff"))
+			{
+				<th>@Html.ActionLink("Edit", "Edit", new { id = trainee.Id })</th>
+				<th>@Html.ActionLink("Delete", "Delete", new { id = trainee.Id })</th>
+			}
+		</tr>
+	}
+</table>

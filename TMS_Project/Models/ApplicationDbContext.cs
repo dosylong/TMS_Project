@@ -17,6 +17,7 @@ namespace TMS_Project.Models
 
         public DbSet<TraineeToCourse> TraineeToCourses { get; set; }
         public DbSet<TrainerToTopic> TrainerToTopics { get; set; }
+        public DbSet<TraineeProfile> TraineeProfiles { get; set; }
 
         public static ApplicationDbContext Create()
         {

@@ -22,22 +22,29 @@
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
 					<li>@Html.ActionLink("Home", "Index", "Home")</li>
-					<li>@Html.ActionLink("Category", "Index", "Categories")</li>
-					<li>@Html.ActionLink("Course", "Index", "Courses")</li>
-					<li>@Html.ActionLink("Topic", "Index", "Topics")</li>
-					<li>@Html.ActionLink("Trainee", "Index", "TraineeToCourses")</li>
-					<li>@Html.ActionLink("Trainer", "Index", "TrainerToTopics")</li>
 
 					@if (Request.IsAuthenticated && User.IsInRole("Admin"))
 					{
 						<li>@Html.ActionLink("Accounts", "Index", "Admins")</li>
 						<li>@Html.ActionLink("New User", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
 					}
+
 					@if (Request.IsAuthenticated && User.IsInRole("TrainingStaff"))
 					{
 						//fix for TrainingStaff
 						<li>@Html.ActionLink("Accounts", "Index", "TrainingStaffs")</li>
 						<li>@Html.ActionLink("New User", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+						<li>@Html.ActionLink("Category", "Index", "Categories")</li>
+						<li>@Html.ActionLink("Course", "Index", "Courses")</li>
+						<li>@Html.ActionLink("Topic", "Index", "Topics")</li>
+						<li>@Html.ActionLink("Trainee", "Index", "TraineeToCourses")</li>
+						<li>@Html.ActionLink("Trainer", "Index", "TrainerToTopics")</li>
+						<li>@Html.ActionLink("Trainee Profile", "Index", "TraineeProfiles")</li>
+					}
+
+					@if (Request.IsAuthenticated && User.IsInRole("Trainee"))
+					{
+						<li>@Html.ActionLink("My Course", "Mine", "TraineeToCourses")</li>
 					}
 				</ul>
 				@Html.Partial("_LoginPartial")

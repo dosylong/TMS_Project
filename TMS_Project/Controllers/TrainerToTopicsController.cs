@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
@@ -108,6 +109,21 @@ namespace TMS_Project.Controllers
 
 			_context.SaveChanges();
 			return RedirectToAction("Index");
+		}
+
+		[HttpGet]
+		[Authorize(Roles = "Trainer")]
+		public ActionResult Mine()
+		{
+			var userId = User.Identity.GetUserId();
+
+			var trainerToTopics = _context.TrainerToTopics
+				.Where(c => c.TrainerId == userId)
+				.Include(c => c.Topic)
+				.Include(c => c.Trainer)
+				.ToList();
+
+			return View(trainerToTopics);
 		}
 	}
 }
