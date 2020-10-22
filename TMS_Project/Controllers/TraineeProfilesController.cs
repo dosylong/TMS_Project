@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
@@ -32,11 +33,11 @@ namespace TMS_Project.Controllers
 		[HttpGet]
 		public ActionResult Create()
 		{
-			var newCreate = new TraineeProfile
+			TraineeProfile traineeProfile = new TraineeProfile
 			{
 				Trainees = _context.Users.ToList(),
 			};
-			return View(newCreate);
+			return View(traineeProfile);
 		}
 
 		[HttpPost]
@@ -100,7 +101,6 @@ namespace TMS_Project.Controllers
 				return HttpNotFound();
 			}
 
-
 			traineeProfileInDb.TraineeId = traineeProfile.TraineeId;
 			traineeProfileInDb.Full_Name = traineeProfile.Full_Name;
 			traineeProfileInDb.Education = traineeProfile.Education;
@@ -110,6 +110,20 @@ namespace TMS_Project.Controllers
 
 			_context.SaveChanges();
 			return RedirectToAction("Index");
+		}
+
+		[HttpGet]
+		[Authorize(Roles = "Trainee")]
+		public ActionResult Mine()
+		{
+			var userId = User.Identity.GetUserId();
+
+			var traineeProfiles = _context.TraineeProfiles
+				.Where(c => c.TraineeId == userId)
+				.Include(c => c.Trainee)
+				.ToList();
+
+			return View(traineeProfiles);
 		}
 	}
 }

@@ -176,6 +176,7 @@
     <Compile Include="Controllers\TopicsController.cs" />
     <Compile Include="Controllers\TraineeProfilesController.cs" />
     <Compile Include="Controllers\TraineeToCoursesController.cs" />
+    <Compile Include="Controllers\TrainerProfilesController.cs" />
     <Compile Include="Controllers\TrainerToTopicsController.cs" />
     <Compile Include="Controllers\TrainingStaffsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -217,6 +218,10 @@
     <Compile Include="Migrations\202010220434386_AddTraineeProfileToDb.Designer.cs">
       <DependentUpon>202010220434386_AddTraineeProfileToDb.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010221012207_AddTrainerProfileToDb.cs" />
+    <Compile Include="Migrations\202010221012207_AddTrainerProfileToDb.Designer.cs">
+      <DependentUpon>202010221012207_AddTrainerProfileToDb.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -227,6 +232,7 @@
     <Compile Include="Models\Topic.cs" />
     <Compile Include="Models\TraineeProfile.cs" />
     <Compile Include="Models\TraineeToCourse.cs" />
+    <Compile Include="Models\TrainerProfile.cs" />
     <Compile Include="Models\TrainerToTopic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -316,6 +322,12 @@
     <Content Include="Views\TraineeProfiles\Index.cshtml" />
     <Content Include="Views\TraineeProfiles\Create.cshtml" />
     <Content Include="Views\TraineeProfiles\Edit.cshtml" />
+    <Content Include="Views\TrainerProfiles\Index.cshtml" />
+    <Content Include="Views\TrainerProfiles\Create.cshtml" />
+    <Content Include="Views\TrainerProfiles\Edit.cshtml" />
+    <Content Include="Views\TraineeProfiles\Mine.cshtml" />
+    <Content Include="Views\TrainerProfiles\Mine.cshtml" />
+    <Content Include="Views\TrainerToTopics\Mine.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -360,6 +372,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010220434386_AddTraineeProfileToDb.resx">
       <DependentUpon>202010220434386_AddTraineeProfileToDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010221012207_AddTrainerProfileToDb.resx">
+      <DependentUpon>202010221012207_AddTrainerProfileToDb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

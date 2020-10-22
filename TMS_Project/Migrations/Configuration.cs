@@ -9,7 +9,7 @@ namespace TMS_Project.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(TMS_Project.Models.ApplicationDbContext context)

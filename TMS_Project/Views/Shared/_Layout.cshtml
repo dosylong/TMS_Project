@@ -40,11 +40,19 @@
 						<li>@Html.ActionLink("Trainee", "Index", "TraineeToCourses")</li>
 						<li>@Html.ActionLink("Trainer", "Index", "TrainerToTopics")</li>
 						<li>@Html.ActionLink("Trainee Profile", "Index", "TraineeProfiles")</li>
+						<li>@Html.ActionLink("Trainer Profile", "Index", "TrainerProfiles")</li>
 					}
 
 					@if (Request.IsAuthenticated && User.IsInRole("Trainee"))
 					{
 						<li>@Html.ActionLink("My Course", "Mine", "TraineeToCourses")</li>
+						<li>@Html.ActionLink("My Profile", "Mine", "TraineeProfiles")</li>
+					}
+
+					@if (Request.IsAuthenticated && User.IsInRole("Trainer"))
+					{
+						<li>@Html.ActionLink("My Topic", "Mine", "TrainerToTopics")</li>
+						<li>@Html.ActionLink("My Profile", "Mine", "TrainerProfiles")</li>
 					}
 				</ul>
 				@Html.Partial("_LoginPartial")

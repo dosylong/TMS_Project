@@ -1,0 +1,25 @@
+﻿@model IEnumerable<TMS_Project.Models.TrainerToTopic>
+@{
+    ViewBag.Title = "Mine";
+}
+
+<h2>My Topic</h2>
+
+<table class="table table-striped">
+	<tr>
+		<th>Trainer Id</th>
+		<th>Trainer Email</th>
+		<th>Trainer UserName</th>
+		<th>Topic Name</th>
+	</tr>
+	@foreach (var trainer in Model)
+	{
+		<tr>
+			<th>@trainer.Id</th>
+			<th>@trainer.Trainer.Email</th>
+			<th>@trainer.Trainer.UserName</th>
+			<th>@trainer.Topic.Name</th>
+		</tr>
+	}
+</table>
+
