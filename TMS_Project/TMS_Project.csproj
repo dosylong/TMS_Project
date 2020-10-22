@@ -223,6 +223,10 @@
     <Compile Include="Migrations\202010221012207_AddTrainerProfileToDb.Designer.cs">
       <DependentUpon>202010221012207_AddTrainerProfileToDb.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010221812059_AddTrainerProfileToDb1.cs" />
+    <Compile Include="Migrations\202010221812059_AddTrainerProfileToDb1.designer.cs">
+      <DependentUpon>202010221812059_AddTrainerProfileToDb1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -256,6 +260,7 @@
     <Content Include="image\help_teams.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\TMSProject - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -332,7 +337,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -377,6 +381,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010221012207_AddTrainerProfileToDb.resx">
       <DependentUpon>202010221012207_AddTrainerProfileToDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010221812059_AddTrainerProfileToDb1.resx">
+      <DependentUpon>202010221812059_AddTrainerProfileToDb1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
