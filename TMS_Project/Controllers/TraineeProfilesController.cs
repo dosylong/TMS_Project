@@ -98,8 +98,23 @@ namespace TMS_Project.Controllers
 				return HttpNotFound();
 			}
 
+			//Get Account Trainee
+			var roleInDb = (from r in _context.Roles where r.Name.Contains("Trainee") select r)
+									 .FirstOrDefault();
 
-			return View(editTraineeProfile);
+			var users = _context.Users.Where(x => x.Roles.Select(y => y.RoleId)
+														 .Contains(roleInDb.Id))
+														 .ToList();
+
+			var traineeProfiles = _context.TraineeProfiles.ToList();
+
+			var traineeProfile = new TraineeProfile
+			{
+				Trainees = users,
+
+			};
+			return View(traineeProfile);
+
 		}
 
 		[HttpPost]

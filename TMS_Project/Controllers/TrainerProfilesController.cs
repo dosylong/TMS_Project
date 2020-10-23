@@ -98,8 +98,22 @@ namespace TMS_Project.Controllers
 				return HttpNotFound();
 			}
 
+			//Get Account Trainer
+			var roleInDb = (from r in _context.Roles where r.Name.Contains("Trainer") select r)
+									 .FirstOrDefault();
 
-			return View(editTrainerProfile);
+			var users = _context.Users.Where(x => x.Roles.Select(y => y.RoleId)
+														 .Contains(roleInDb.Id))
+														 .ToList();
+
+			var trainerProfiles = _context.TrainerProfiles.ToList();
+
+			var trainerProfile = new TrainerProfile
+			{
+				Trainers = users,
+
+			};
+			return View(trainerProfile);
 		}
 
 		[HttpPost]
