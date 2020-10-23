@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using TMS_Project.Models;
-using static TMS_Project.Controllers.ManageController;
 
 namespace TMS_Project.Controllers
 {
@@ -39,7 +36,7 @@ namespace TMS_Project.Controllers
 		}
 
 		[HttpPost]
-		public ActionResult Create(Category category, ManageMessageId? message)
+		public ActionResult Create(Category category)
 		{
 			if (!ModelState.IsValid)
 			{
@@ -64,7 +61,7 @@ namespace TMS_Project.Controllers
 
 			_context.Categories.Add(newCategory);
 			_context.SaveChanges();
-			
+
 			return RedirectToAction("Index");
 
 

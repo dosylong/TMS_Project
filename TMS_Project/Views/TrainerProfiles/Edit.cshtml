@@ -18,31 +18,31 @@
 
 	<div class="form-group">
 		@Html.LabelFor(tp => tp.Full_Name)
-		@Html.TextBoxFor(tp => tp.Full_Name, new { @class = "form-control" })
+		@Html.EditorFor(tp => tp.Full_Name, new { htmlAttributes = new { @class = "form-control" } })
 		@Html.ValidationMessageFor(tp => tp.Full_Name)
 	</div>
 
 	<div class="form-group">
 		@Html.LabelFor(tp => tp.Education)
-		@Html.TextBoxFor(tp => tp.Education, new { @class = "form-control" })
+		@Html.EditorFor(tp => tp.Education, new { htmlAttributes = new { @class = "form-control" } })
 		@Html.ValidationMessageFor(tp => tp.Education)
 	</div>
 
 	<div class="form-group">
 		@Html.LabelFor(tp => tp.External_Internal)
-		@Html.TextBoxFor(tp => tp.External_Internal, new { @class = "form-control" })
+		@Html.EditorFor(tp => tp.External_Internal, new { htmlAttributes = new { @class = "form-control" } })
 		@Html.ValidationMessageFor(tp => tp.External_Internal)
 	</div>
 
 	<div class="form-group">
 		@Html.LabelFor(tp => tp.Working_Place)
-		@Html.TextBoxFor(tp => tp.Working_Place, new { @class = "form-control" })
+		@Html.EditorFor(tp => tp.Working_Place, new { htmlAttributes = new { @class = "form-control" } })
 		@Html.ValidationMessageFor(tp => tp.Working_Place)
 	</div>
 
 	<div class="form-group">
 		@Html.LabelFor(tp => tp.Phone_Number)
-		@Html.TextBoxFor(tp => tp.Phone_Number, new { @class = "form-control" })
+		@Html.EditorFor(tp => tp.Phone_Number, new { htmlAttributes = new { @class = "form-control" } })
 		@Html.ValidationMessageFor(tp => tp.Phone_Number)
 	</div>
 
