@@ -33,9 +33,20 @@ namespace TMS_Project.Controllers
 		[HttpGet]
 		public ActionResult Create()
 		{
-			TrainerProfile trainerProfile = new TrainerProfile
+			//Get Account Trainer
+			var roleInDb = (from r in _context.Roles where r.Name.Contains("Trainer") select r)
+									 .FirstOrDefault();
+
+			var users = _context.Users.Where(x => x.Roles.Select(y => y.RoleId)
+														 .Contains(roleInDb.Id))
+														 .ToList();
+
+			var trainerProfiles = _context.TrainerProfiles.ToList();
+
+			var trainerProfile = new TrainerProfile
 			{
-				Trainers = _context.Users.ToList(),
+				Trainers = users,
+
 			};
 			return View(trainerProfile);
 		}

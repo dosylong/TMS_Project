@@ -381,6 +381,7 @@ namespace TMS_Project.Controllers
             SetPasswordSuccess,
             RemoveLoginSuccess,
             RemovePhoneSuccess,
+            CreateCategorySuccess,
             Error
         }
 

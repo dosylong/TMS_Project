@@ -10,7 +10,7 @@ namespace TMS_Project.Models
 	{
 		public int Id { get; set; }
 
-		[DisplayName("Trainer Email")]
+		[DisplayName("Trainer ID")]
 		public string TrainerId { get; set; }
 		public IEnumerable<ApplicationUser> Trainers { get; set; }
 

@@ -33,9 +33,20 @@ namespace TMS_Project.Controllers
 		[HttpGet]
 		public ActionResult Create()
 		{
-			TraineeProfile traineeProfile = new TraineeProfile
+			//Get Account Trainee
+			var roleInDb = (from r in _context.Roles where r.Name.Contains("Trainee") select r)
+									 .FirstOrDefault();
+
+			var users = _context.Users.Where(x => x.Roles.Select(y => y.RoleId)
+														 .Contains(roleInDb.Id))
+														 .ToList();
+
+			var traineeProfiles = _context.TraineeProfiles.ToList();
+
+			var traineeProfile = new TraineeProfile
 			{
-				Trainees = _context.Users.ToList(),
+				Trainees = users,
+
 			};
 			return View(traineeProfile);
 		}

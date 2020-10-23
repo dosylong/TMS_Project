@@ -37,10 +37,22 @@ namespace TMS_Project.Controllers
 		[HttpGet]
 		public ActionResult Create()
 		{
+			//Get Account Trainee
+			var roleInDb = (from r in _context.Roles where r.Name.Contains("Trainee") select r)
+									 .FirstOrDefault();
+
+			var users = _context.Users.Where(x => x.Roles.Select(y => y.RoleId)
+													     .Contains(roleInDb.Id))
+														 .ToList();
+
+			//Get Course
+			var courses = _context.Courses.ToList();
+
 			var viewModel = new TraineeToCourseViewModel
 			{
-				Courses = _context.Courses.ToList(),
-				Trainees = _context.Users.ToList()
+				Courses = courses,
+				Trainees = users,
+				TraineeToCourse = new TraineeToCourse()
 			};
 
 			return View(viewModel);
@@ -75,7 +87,7 @@ namespace TMS_Project.Controllers
 			return RedirectToAction("Index");
 		}
 
-		[HttpGet]
+		/*[HttpGet]
 		public ActionResult Edit(int id)
 		{
 			var traineeInDb = _context.TraineeToCourses.SingleOrDefault(trdb => trdb.Id == id);
@@ -108,7 +120,7 @@ namespace TMS_Project.Controllers
 
 			_context.SaveChanges();
 			return RedirectToAction("Index");
-		}
+		}*/
 
 		[HttpGet]
 		[Authorize(Roles = "Trainee")]

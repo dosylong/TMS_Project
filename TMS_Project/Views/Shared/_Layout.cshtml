@@ -21,7 +21,6 @@
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li>@Html.ActionLink("Home", "Index", "Home")</li>
 
 					@if (Request.IsAuthenticated && User.IsInRole("Admin"))
 					{
@@ -32,15 +31,26 @@
 					@if (Request.IsAuthenticated && User.IsInRole("TrainingStaff"))
 					{
 						//fix for TrainingStaff
-						<li>@Html.ActionLink("Accounts", "Index", "TrainingStaffs")</li>
-						<li>@Html.ActionLink("New User", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-						<li>@Html.ActionLink("Category", "Index", "Categories")</li>
-						<li>@Html.ActionLink("Course", "Index", "Courses")</li>
-						<li>@Html.ActionLink("Topic", "Index", "Topics")</li>
-						<li>@Html.ActionLink("Trainee", "Index", "TraineeToCourses")</li>
-						<li>@Html.ActionLink("Trainer", "Index", "TrainerToTopics")</li>
-						<li>@Html.ActionLink("Trainee Profile", "Index", "TraineeProfiles")</li>
-						<li>@Html.ActionLink("Trainer Profile", "Index", "TrainerProfiles")</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="False">Category<span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu">
+								<li>@Html.ActionLink("Category", "Index", "Categories")</li>
+								<li>@Html.ActionLink("Course", "Index", "Courses")</li>
+								<li>@Html.ActionLink("Topic", "Index", "Topics")</li>
+							</ul>
+						</li>
+
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="False">Manage User<span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu">
+								<li>@Html.ActionLink("Accounts", "Index", "TrainingStaffs")</li>
+								<li>@Html.ActionLink("New User", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+								<li>@Html.ActionLink("Trainee", "Index", "TraineeToCourses")</li>
+								<li>@Html.ActionLink("Trainer", "Index", "TrainerToTopics")</li>
+								<li>@Html.ActionLink("Trainee Profile", "Index", "TraineeProfiles")</li>
+								<li>@Html.ActionLink("Trainer Profile", "Index", "TrainerProfiles")</li>
+							</ul>
+						</li>
 					}
 
 					@if (Request.IsAuthenticated && User.IsInRole("Trainee"))

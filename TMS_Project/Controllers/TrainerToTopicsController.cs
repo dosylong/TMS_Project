@@ -38,10 +38,22 @@ namespace TMS_Project.Controllers
 		[HttpGet]
 		public ActionResult Create()
 		{
+			//Get Account Trainer
+			var roleInDb = (from r in _context.Roles where r.Name.Contains("Trainer") select r)
+									 .FirstOrDefault();
+
+			var users = _context.Users.Where(x => x.Roles.Select(y => y.RoleId)
+														 .Contains(roleInDb.Id))
+														 .ToList();
+
+			//Get Topic
+			var topics = _context.Topics.ToList();
+
 			var viewModel = new TrainerToTopicViewModel
 			{
-				Topics = _context.Topics.ToList(),
-				Trainers = _context.Users.ToList()
+				Topics = topics,
+				Trainers = users,
+				TrainerToTopic = new TrainerToTopic()
 			};
 
 			return View(viewModel);
@@ -76,7 +88,7 @@ namespace TMS_Project.Controllers
 			return RedirectToAction("Index");
 		}
 
-		[HttpGet]
+		/*[HttpGet]
 		public ActionResult Edit(int id)
 		{
 			var trainerInDb = _context.TrainerToTopics.SingleOrDefault(trdb => trdb.Id == id);
@@ -109,7 +121,7 @@ namespace TMS_Project.Controllers
 
 			_context.SaveChanges();
 			return RedirectToAction("Index");
-		}
+		}*/
 
 		[HttpGet]
 		[Authorize(Roles = "Trainer")]

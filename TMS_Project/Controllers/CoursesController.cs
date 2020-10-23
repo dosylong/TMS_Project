@@ -44,7 +44,7 @@ namespace TMS_Project.Controllers
 		}
 
 		[HttpPost]
-		public ActionResult Create(Course course)
+		public ActionResult Create(Course course, Category category)
 		{
 			if (!ModelState.IsValid)
 			{
@@ -53,12 +53,12 @@ namespace TMS_Project.Controllers
 
 			//Check if Course Name existed or not
 			var isCourseNameExist = _context.Courses.Any(
-				c => c.Name.Contains(course.Category.Name));
+				c => c.Name.Contains(course.Name));
 
 			if (isCourseNameExist)
 			{
-				ModelState.AddModelError("Name", "Category Name Already Exists.");
-				return View();
+				ModelState.AddModelError("Name", "Course Name Already Exists.");
+				return RedirectToAction("Index");
 			}
 
 			var newCourse = new Course
