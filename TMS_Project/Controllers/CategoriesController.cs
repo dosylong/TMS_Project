@@ -96,18 +96,6 @@ namespace TMS_Project.Controllers
 				return HttpNotFound();
 			}
 
-			//Check if Category Name existed or not
-			var isCategoryNameExist = _context.Categories.Any(
-				c => c.Name.Contains(category.Name));
-
-			if (isCategoryNameExist)
-			{
-				ModelState.AddModelError("Name", "Category Name Already Exists.");
-				return View();
-			}
-			categoryInDb.Name = category.Name;
-			categoryInDb.Descriptions = category.Descriptions;
-
 			_context.SaveChanges();
 			return RedirectToAction("Index");
 		}

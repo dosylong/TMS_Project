@@ -109,16 +109,6 @@ namespace TMS_Project.Controllers
 				return HttpNotFound();
 			}
 
-			//Check if Course Name existed or not
-			var isCourseNameExist = _context.Courses.Any(
-				c => c.Name.Contains(course.Name));
-
-			if (isCourseNameExist)
-			{
-				ModelState.AddModelError("Name", "Course Name Already Exists.");
-				return View();
-			}
-
 			courseInDb.Name = course.Name;
 			courseInDb.Descriptions = course.Descriptions;
 			courseInDb.CategoryId = course.CategoryId;

@@ -95,16 +95,6 @@ namespace TMS_Project.Controllers
 				return HttpNotFound();
 			}
 
-			//Check if Topic Name existed or not
-			var isTopicNameExist = _context.Topics.Any(
-				c => c.Name.Contains(topic.Name));
-
-			if (isTopicNameExist)
-			{
-				ModelState.AddModelError("Name", "Topic Name Already Exists.");
-				return View();
-			}
-
 			topicInDb.Name = topic.Name;
 			topicInDb.Descriptions = topic.Descriptions;
 			topicInDb.CourseId = topic.CourseId;
