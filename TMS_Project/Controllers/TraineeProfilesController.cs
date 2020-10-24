@@ -88,38 +88,22 @@ namespace TMS_Project.Controllers
 		{
 			var traineeProfileInDb = _context.TraineeProfiles.SingleOrDefault(trdb => trdb.Id == id);
 
-			var editTraineeProfile = new TraineeProfile
-			{
-				Trainees = _context.Users.ToList(),
-			};
-
 			if (traineeProfileInDb == null)
 			{
 				return HttpNotFound();
 			}
 
-			//Get Account Trainee
-			var roleInDb = (from r in _context.Roles where r.Name.Contains("Trainee") select r)
-									 .FirstOrDefault();
-
-			var users = _context.Users.Where(x => x.Roles.Select(y => y.RoleId)
-														 .Contains(roleInDb.Id))
-														 .ToList();
-
-			var traineeProfiles = _context.TraineeProfiles.ToList();
-
-			var traineeProfile = new TraineeProfile
-			{
-				Trainees = users,
-
-			};
-			return View(traineeProfile);
-
+			return View(traineeProfileInDb);
 		}
 
 		[HttpPost]
 		public ActionResult Edit(TraineeProfile traineeProfile)
 		{
+			if (!ModelState.IsValid)
+			{
+				return View();
+			}
+
 			var traineeProfileInDb = _context.TraineeProfiles.SingleOrDefault(trdb => trdb.Id == traineeProfile.Id);
 
 			if (traineeProfileInDb == null)

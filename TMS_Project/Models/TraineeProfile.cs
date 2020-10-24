@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -10,11 +11,10 @@ namespace TMS_Project.Models
 	{
 		public int Id { get; set; }
 
-		[DisplayName("Trainee Email")]
+		[DisplayName("Trainee ID")]
+		[Required]
 		public string TraineeId { get; set; }
-
 		public IEnumerable<ApplicationUser> Trainees { get; set; }
-
 		public ApplicationUser Trainee { get; set; }
 
 		[DisplayName("Full Name")]

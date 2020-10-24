@@ -44,7 +44,7 @@ namespace TMS_Project.Controllers
 		}
 
 		[HttpPost]
-		public ActionResult Create(Course course, Category category)
+		public ActionResult Create(Course course)
 		{
 			if (!ModelState.IsValid)
 			{

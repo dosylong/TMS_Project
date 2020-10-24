@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -11,6 +12,7 @@ namespace TMS_Project.Models
 		public int Id { get; set; }
 
 		[DisplayName("Trainer ID")]
+		[Required]
 		public string TrainerId { get; set; }
 		public IEnumerable<ApplicationUser> Trainers { get; set; }
 

@@ -7,14 +7,8 @@
 
 @using (Html.BeginForm("Edit", "TrainerProfiles", FormMethod.Post))
 {
-	<div class="form-group">
-		@Html.LabelFor(tp => tp.TrainerId)
-		@Html.DropDownListFor(tp => tp.TrainerId
-		  , new SelectList(Model.Trainers, "Id", "Email"),
-		  "Select Trainee",
-		  new { @class = "form-control" }
-		)
-	</div>
+	@Html.AntiForgeryToken()
+	@Html.HiddenFor(p => p.Id)
 
 	<div class="form-group">
 		@Html.LabelFor(tp => tp.Full_Name)
@@ -47,5 +41,11 @@
 	</div>
 
 	<button type="submit" class="btn btn-primary">Edit</button>
+
+	<div class="invisible">
+		@Html.LabelFor(p => p.TrainerId)
+		@Html.EditorFor(p => p.TrainerId, new { htmlAttributes = new { @class = "form-control" } })
+		@Html.ValidationMessageFor(p => p.TrainerId, "", new { @class = "text-danger" })
+	</div>
 }
 
