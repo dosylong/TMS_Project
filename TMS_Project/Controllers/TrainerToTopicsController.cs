@@ -36,6 +36,7 @@ namespace TMS_Project.Controllers
 		}
 
 		[HttpGet]
+		[Authorize(Roles = "TrainingStaff")]
 		public ActionResult Create()
 		{
 			//Get Account Trainer
@@ -61,6 +62,7 @@ namespace TMS_Project.Controllers
 
 
 		[HttpPost]
+		[Authorize(Roles = "TrainingStaff")]
 		public ActionResult Create(TrainerToTopic trainerToTopic)
 		{
 			var newTrainerToTopic = new TrainerToTopic
@@ -75,6 +77,7 @@ namespace TMS_Project.Controllers
 		}
 
 		[HttpGet]
+		[Authorize(Roles = "TrainingStaff")]
 		public ActionResult Delete(int id)
 		{
 			var trainerInDb = _context.TrainerToTopics.SingleOrDefault(trdb => trdb.Id == id);

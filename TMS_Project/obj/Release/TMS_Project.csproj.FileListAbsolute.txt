@@ -118,3 +118,5 @@ C:\Users\Long Do\source\repos\TMS_Project\TMS_Project\obj\Release\TMS_Project.cs
 C:\Users\Long Do\source\repos\TMS_Project\TMS_Project\obj\Release\TMS_Project.dll
 C:\Users\Long Do\source\repos\TMS_Project\TMS_Project\obj\Release\TMS_Project.pdb
 C:\Users\Long Do\Source\Repos\TMS_Project\TMS_Project\obj\Release\TMS_Project.Migrations.AddTrainerProfileToDb1.resources
+C:\Users\Long Do\source\repos\TMS_Project\TMS_Project\obj\Release\TMS_Project.Migrations.AddTraineeProfileToDb1.resources
+C:\Users\Long Do\source\repos\TMS_Project\TMS_Project\obj\Release\TMS_Project.Migrations.AddTrainerProfileToDb2.resources

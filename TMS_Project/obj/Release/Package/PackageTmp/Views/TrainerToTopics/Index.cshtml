@@ -30,7 +30,6 @@
 		<th>Topic Name</th>
 		@if (Request.IsAuthenticated && User.IsInRole("TrainingStaff"))
 		{
-			<th>Edit</th>
 			<th>Delete</th>
 		}
 
@@ -44,7 +43,6 @@
 			<th>@trainer.Topic.Name</th>
 			@if (Request.IsAuthenticated && User.IsInRole("TrainingStaff"))
 			{
-				<th>@Html.ActionLink("Edit", "Edit", new { id = trainer.Id })</th>
 				<th>@Html.ActionLink("Delete", "Delete", new { id = trainer.Id })</th>
 			}
 		</tr>

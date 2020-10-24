@@ -30,7 +30,6 @@
 			<th>Course Name</th>
 			@if (Request.IsAuthenticated && User.IsInRole("TrainingStaff"))
 			{
-				<th>Edit</th>
 				<th>Delete</th>
 			}
 
@@ -44,7 +43,6 @@
 			<th>@trainee.Course.Name</th>
 			@if (Request.IsAuthenticated && User.IsInRole("TrainingStaff"))
 			{
-				<th>@Html.ActionLink("Edit", "Edit", new { id = trainee.Id })</th>
 				<th>@Html.ActionLink("Delete", "Delete", new { id = trainee.Id })</th>
 			}
 		</tr>

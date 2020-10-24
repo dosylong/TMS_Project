@@ -35,6 +35,7 @@ namespace TMS_Project.Controllers
 		}
 
 		[HttpGet]
+		[Authorize(Roles = "TrainingStaff")]
 		public ActionResult Create()
 		{
 			//Get Account Trainee
@@ -60,6 +61,7 @@ namespace TMS_Project.Controllers
 
 
 		[HttpPost]
+		[Authorize(Roles = "TrainingStaff")]
 		public ActionResult Create(TraineeToCourse traineeToCourse)
 		{
 			var newTraineeToCourse = new TraineeToCourse
@@ -74,6 +76,7 @@ namespace TMS_Project.Controllers
 		}
 
 		[HttpGet]
+		[Authorize(Roles = "TrainingStaff")]
 		public ActionResult Delete(int id)
 		{
 			var traineeInDb = _context.TraineeToCourses.SingleOrDefault(trdb => trdb.Id == id);

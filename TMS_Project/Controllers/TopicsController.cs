@@ -34,6 +34,7 @@ namespace TMS_Project.Controllers
 
 		// Create Topic (Topics/Create)
 		[HttpGet]
+		[Authorize(Roles = "TrainingStaff")]
 		public ActionResult Create()
 		{
 			var viewModel = new TopicCourseViewModel
@@ -45,6 +46,7 @@ namespace TMS_Project.Controllers
 
 
 		[HttpPost]
+		[Authorize(Roles = "TrainingStaff")]
 		public ActionResult Create(Topic topic)
 		{
 			if (!ModelState.IsValid)
@@ -67,6 +69,7 @@ namespace TMS_Project.Controllers
 
 		// Edit Topic (Topics/Edit/Id/...)
 		[HttpGet]
+		[Authorize(Roles = "TrainingStaff")]
 		public ActionResult Edit(int id)
 		{
 			var topicInDb = _context.Topics.SingleOrDefault(t => t.Id == id);
@@ -86,6 +89,7 @@ namespace TMS_Project.Controllers
 		}
 
 		[HttpPost]
+		[Authorize(Roles = "TrainingStaff")]
 		public ActionResult Edit(Topic topic)
 		{
 			var topicInDb = _context.Topics.SingleOrDefault(t => t.Id == topic.Id);
@@ -105,6 +109,7 @@ namespace TMS_Project.Controllers
 
 		// Delete Topic (Topics/Delete/Id/...)
 		[HttpGet]
+		[Authorize(Roles = "TrainingStaff")]
 		public ActionResult Delete(int id)
 		{
 			var topicInDb = _context.Topics.SingleOrDefault(t => t.Id == id);

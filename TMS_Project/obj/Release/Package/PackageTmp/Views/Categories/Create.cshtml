@@ -11,13 +11,13 @@
 	<div class="form-group">
 		@Html.LabelFor(c => c.Name)
 		@Html.TextBoxFor(c => c.Name, new { @class = "form-control" })
-		@Html.ValidationMessageFor(c => c.Name)
+		@Html.ValidationMessageFor(c => c.Name, "", new { @class = "text-danger" })
 	</div>
 
 	<div class="form-group">
 		@Html.LabelFor(c => c.Descriptions)
 		@Html.TextBoxFor(c => c.Descriptions, new { @class = "form-control" })
-		@Html.ValidationMessageFor(c => c.Descriptions)
+		@Html.ValidationMessageFor(c => c.Descriptions, "", new { @class = "text-danger" })
 	</div>
 	<button type="submit" class="btn btn-primary">Create</button>
 }

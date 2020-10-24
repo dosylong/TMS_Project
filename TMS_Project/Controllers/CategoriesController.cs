@@ -30,12 +30,14 @@ namespace TMS_Project.Controllers
 
 		// Create Category (Categories/Create)
 		[HttpGet]
+		[Authorize(Roles = "TrainingStaff")]
 		public ActionResult Create()
 		{
 			return View();
 		}
 
 		[HttpPost]
+		[Authorize(Roles = "TrainingStaff")]
 		public ActionResult Create(Category category)
 		{
 			if (!ModelState.IsValid)
@@ -69,6 +71,7 @@ namespace TMS_Project.Controllers
 
 		// Edit Category (Categories/Edit/Id/...)
 		[HttpGet]
+		[Authorize(Roles = "TrainingStaff")]
 		public ActionResult Edit(int id)
 		{
 			var categoryInDb = _context.Categories.SingleOrDefault(c => c.Id == id);
@@ -81,6 +84,7 @@ namespace TMS_Project.Controllers
 		}
 
 		[HttpPost]
+		[Authorize(Roles = "TrainingStaff")]
 		public ActionResult Edit(Category category)
 		{
 
@@ -102,6 +106,7 @@ namespace TMS_Project.Controllers
 
 		// Delete Category (Categories/Delete/Id/...)
 		[HttpGet]
+		[Authorize(Roles = "TrainingStaff")]
 		public ActionResult Delete(int id)
 		{
 			var categoryInDb = _context.Categories.SingleOrDefault(c => c.Id == id);

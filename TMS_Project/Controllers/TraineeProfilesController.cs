@@ -31,6 +31,7 @@ namespace TMS_Project.Controllers
 		}
 
 		[HttpGet]
+		[Authorize(Roles = "TrainingStaff")]
 		public ActionResult Create()
 		{
 			//Get Account Trainee
@@ -52,6 +53,7 @@ namespace TMS_Project.Controllers
 		}
 
 		[HttpPost]
+		[Authorize(Roles = "TrainingStaff")]
 		public ActionResult Create(TraineeProfile traineeProfile)
 		{
 			var getTraineeProfile = new TraineeProfile
@@ -70,6 +72,7 @@ namespace TMS_Project.Controllers
 		}
 
 		[HttpGet]
+		[Authorize(Roles = "TrainingStaff")]
 		public ActionResult Delete(int id)
 		{
 			var traineeProfileInDb = _context.TraineeProfiles.SingleOrDefault(trdb => trdb.Id == id);
@@ -84,6 +87,7 @@ namespace TMS_Project.Controllers
 		}
 
 		[HttpGet]
+		[Authorize(Roles = "TrainingStaff")]
 		public ActionResult Edit(int id)
 		{
 			var traineeProfileInDb = _context.TraineeProfiles.SingleOrDefault(trdb => trdb.Id == id);
@@ -97,6 +101,7 @@ namespace TMS_Project.Controllers
 		}
 
 		[HttpPost]
+		[Authorize(Roles = "TrainingStaff")]
 		public ActionResult Edit(TraineeProfile traineeProfile)
 		{
 			if (!ModelState.IsValid)

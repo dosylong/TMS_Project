@@ -34,6 +34,7 @@ namespace TMS_Project.Controllers
 
 		// Create Course (Courses/Create)
 		[HttpGet]
+		[Authorize(Roles = "TrainingStaff")]
 		public ActionResult Create()
 		{
 			var viewModel = new CourseCategoryViewModel
@@ -44,6 +45,7 @@ namespace TMS_Project.Controllers
 		}
 
 		[HttpPost]
+		[Authorize(Roles = "TrainingStaff")]
 		public ActionResult Create(Course course)
 		{
 			if (!ModelState.IsValid)
@@ -76,6 +78,7 @@ namespace TMS_Project.Controllers
 
 		// Edit Course (Courses/Edit/Id/...)
 		[HttpGet]
+		[Authorize(Roles = "TrainingStaff")]
 		public ActionResult Edit(int id)
 		{
 			var courseInDb = _context.Courses.SingleOrDefault(co => co.Id == id);
@@ -95,6 +98,7 @@ namespace TMS_Project.Controllers
 		}
 
 		[HttpPost]
+		[Authorize(Roles = "TrainingStaff")]
 		public ActionResult Edit(Course course)
 		{
 			if (!ModelState.IsValid)
@@ -119,6 +123,7 @@ namespace TMS_Project.Controllers
 
 		// Delete Course (Courses/Delete/Id/...)
 		[HttpGet]
+		[Authorize(Roles = "TrainingStaff")]
 		public ActionResult Delete(int id)
 		{
 			var courseInDb = _context.Courses.SingleOrDefault(co => co.Id == id);
