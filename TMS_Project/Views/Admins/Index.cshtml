@@ -5,7 +5,7 @@
 
 <h2>Index</h2>
 
-@if (User.IsInRole("TrainingStaff") && Request.IsAuthenticated)
+@if (User.IsInRole("Admin") && Request.IsAuthenticated)
 {
 	<table class="table table-striped">
 		<tr>
