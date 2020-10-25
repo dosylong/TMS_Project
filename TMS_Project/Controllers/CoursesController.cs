@@ -60,7 +60,6 @@ namespace TMS_Project.Controllers
 			if (isCourseNameExist)
 			{
 				ModelState.AddModelError("Name", "Course Name Already Exists.");
-				return RedirectToAction("Index");
 			}
 
 			var newCourse = new Course
@@ -112,6 +111,16 @@ namespace TMS_Project.Controllers
 			{
 				return HttpNotFound();
 			}
+
+			/*Check if Topic Name existed or not
+			var isTopicNameExist = _context.Topics.Any(
+				c => c.Name.Contains(topic.Name));
+
+			if (isTopicNameExist)
+			{
+				ModelState.AddModelError("Name", "Topic Name Already Exists.");
+				return RedirectToAction("Index");
+			}*/
 
 			courseInDb.Name = course.Name;
 			courseInDb.Descriptions = course.Descriptions;
