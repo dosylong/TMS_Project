@@ -43,9 +43,8 @@ namespace TMS_Project.Controllers
 									 .FirstOrDefault();
 
 			var users = _context.Users.Where(x => x.Roles.Select(y => y.RoleId)
-													     .Contains(roleInDb.Id))
+														 .Contains(roleInDb.Id))
 														 .ToList();
-
 			//Get Course
 			var courses = _context.Courses.ToList();
 
@@ -69,7 +68,6 @@ namespace TMS_Project.Controllers
 				TraineeId = traineeToCourse.TraineeId,
 				CourseId = traineeToCourse.CourseId
 			};
-
 			_context.TraineeToCourses.Add(newTraineeToCourse);
 			_context.SaveChanges();
 			return RedirectToAction("Index");
