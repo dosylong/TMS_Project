@@ -53,14 +53,14 @@ namespace TMS_Project.Controllers
 				return View();
 			}
 
-			//Check if Course Name existed or not
+			/*Check if Course Name existed or not
 			var isCourseNameExist = _context.Courses.Any(
 				c => c.Name.Contains(course.Name));
 
 			if (isCourseNameExist)
 			{
 				ModelState.AddModelError("Name", "Course Name Already Exists.");
-			}
+			}*/
 
 			var newCourse = new Course
 			{
