@@ -45,7 +45,7 @@ namespace TMS_Project.Controllers
 				return View();
 			}
 
-			/*Check if Category Name existed or not
+			//Check if Category Name existed or not
 			var isCategoryNameExist = _context.Categories.Any(
 				c => c.Name.Contains(category.Name));
 
@@ -53,7 +53,7 @@ namespace TMS_Project.Controllers
 			{
 				ModelState.AddModelError("Name", "Category Name Already Exists.");
 				return View();
-			}*/
+			}
 
 			var newCategory = new Category
 			{
