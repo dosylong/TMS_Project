@@ -58,12 +58,11 @@ namespace TMS_Project.Controllers
 			var newCategory = new Category
 			{
 				Name = category.Name,
-				Descriptions = category.Descriptions,
+				Descriptions = category.Descriptions
 			};
 
 			_context.Categories.Add(newCategory);
 			_context.SaveChanges();
-
 			return RedirectToAction("Index");
 
 
