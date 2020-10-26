@@ -16,6 +16,7 @@ namespace TMS_Project.Controllers
 
 		// Categories/Index
 		[HttpGet]
+		[Authorize(Roles = "TrainingStaff")]
 		public ActionResult Index(string searchCategory)
 		{
 			var categories = _context.Categories.ToList();

@@ -3,8 +3,6 @@
 	ViewBag.Title = "Index";
 }
 
-@if (User.IsInRole("TrainingStaff") && Request.IsAuthenticated)
-{
 	<h2>Index</h2>
 	<table class="table table-striped">
 		<tr>
@@ -38,5 +36,3 @@
 			</tr>
 		}
 	</table>
-}
-

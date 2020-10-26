@@ -17,9 +17,11 @@ namespace TMS_Project.Controllers
 			_context = new ApplicationDbContext();
 		}
 
+		[Authorize(Roles = "TrainingStaff")]
 		public ActionResult Index()
 		{
-			var userInfor = (from user in _context.Users
+			//Láy giá trị từ bẳng AspNetUser và liên kết với bảng AspnetRole thông qua bảng AspNetUserRole
+			var UserInfor = (from user in _context.Users
 							 select new
 							 /*FROM-IN: xác định nguồn dữ liệu truy vấn (Users). 
                              Nguồn dữ liệu tập hợp những phần tử thuộc kiểu lớp triển khai giao diện IEnumrable*/
@@ -35,16 +37,21 @@ namespace TMS_Project.Controllers
 											 equals role.Id              //EQUALS: chỉ ra căn cứ vs ràng buộc (userRole.RoleId ~~ role.Id)
 											 select role.Name).ToList()
 							 }
-							 ).ToList().Select(p => new UserInRolesViewModel()
-							 {
-								 UserId = p.UserId,
-								 Username = p.Username,
-								 Email = p.Emailaddress,
-								 Role = string.Join(",", p.RoleName)
-							 }
-											 );
+							 ).ToList();
 
-			return View(userInfor);
+
+
+			// gắn giá trị của user with roleName vào UserInRolesViewModel()
+			var UserWithRole = UserInfor.Select(p => new UserInRolesViewModel()
+			{
+				UserId = p.UserId,
+				Username = p.Username,
+				Email = p.Emailaddress,
+				Role = string.Join(",", p.RoleName)
+			}
+												);
+
+			return View(UserWithRole);
 		}
 
 		/*.
@@ -60,6 +67,7 @@ namespace TMS_Project.Controllers
 
 		//DELETE ACCOUNT
 		[HttpGet]
+		[Authorize(Roles = "TrainingStaff")]
 		public ActionResult Delete(string id)
 		{
 			var AccountInDB = _context.Users.SingleOrDefault(p => p.Id == id);
@@ -76,6 +84,7 @@ namespace TMS_Project.Controllers
 
 		//Edit 
 		[HttpGet]
+		[Authorize(Roles = "TrainingStaff")]
 		public ActionResult Edit(string id)
 		{
 			var AccountInDB = _context.Users.SingleOrDefault(p => p.Id == id);
@@ -88,6 +97,7 @@ namespace TMS_Project.Controllers
 
 		//EDIT
 		[HttpPost]
+		[Authorize(Roles = "TrainingStaff")]
 		public ActionResult Edit(ApplicationUser user)
 		{
 			if (!ModelState.IsValid)
@@ -131,6 +141,7 @@ namespace TMS_Project.Controllers
 
 		//Change password
 		[HttpGet]
+		[Authorize(Roles = "TrainingStaff")]
 		public ActionResult ChangePass(string id)
 		{
 			var AccountInDB = _context.Users.SingleOrDefault(p => p.Id == id);

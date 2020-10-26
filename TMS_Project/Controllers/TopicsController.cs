@@ -18,6 +18,7 @@ namespace TMS_Project.Controllers
 
 		// Topics/Index
 		[HttpGet]
+		[Authorize(Roles = "TrainingStaff")]
 		public ActionResult Index(string searchTopic)
 		{
 			var topics = _context.Topics.Include(t => t.Course);

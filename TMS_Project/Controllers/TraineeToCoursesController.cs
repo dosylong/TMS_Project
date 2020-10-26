@@ -63,11 +63,23 @@ namespace TMS_Project.Controllers
 		[Authorize(Roles = "TrainingStaff")]
 		public ActionResult Create(TraineeToCourse traineeToCourse)
 		{
+
+			var checkTraineeAndCourseExist = _context.TraineeToCourses.Any(
+									c => c.CourseId == traineeToCourse.CourseId &&
+									c.TraineeId == traineeToCourse.TraineeId);
+
+			if (checkTraineeAndCourseExist)
+			{
+				ModelState.AddModelError("Email", "Course Name or Trainee Already Exists.");
+				return View();
+			}
+
 			var newTraineeToCourse = new TraineeToCourse
 			{
 				TraineeId = traineeToCourse.TraineeId,
 				CourseId = traineeToCourse.CourseId
 			};
+
 			_context.TraineeToCourses.Add(newTraineeToCourse);
 			_context.SaveChanges();
 			return RedirectToAction("Index");
