@@ -235,6 +235,10 @@
     <Compile Include="Migrations\202010240456280_AddTrainerProfileToDb2.designer.cs">
       <DependentUpon>202010240456280_AddTrainerProfileToDb2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010271338103_AddTraineeToCourse1.cs" />
+    <Compile Include="Migrations\202010271338103_AddTraineeToCourse1.designer.cs">
+      <DependentUpon>202010271338103_AddTraineeToCourse1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -341,6 +345,11 @@
     <Content Include="Views\TraineeProfiles\Mine.cshtml" />
     <Content Include="Views\TrainerProfiles\Mine.cshtml" />
     <Content Include="Views\TrainerToTopics\Mine.cshtml" />
+    <Content Include="Views\CheckConditions\CreateCategoryExist.cshtml" />
+    <Content Include="Views\CheckConditions\NullCategory.cshtml" />
+    <Content Include="Views\CheckConditions\CreateCategorySuccess.cshtml" />
+    <Content Include="Views\CheckConditions\EditCategorySuccess.cshtml" />
+    <Content Include="Views\CheckConditions\EditCategoryExist.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -397,6 +406,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010240456280_AddTrainerProfileToDb2.resx">
       <DependentUpon>202010240456280_AddTrainerProfileToDb2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010271338103_AddTraineeToCourse1.resx">
+      <DependentUpon>202010271338103_AddTraineeToCourse1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

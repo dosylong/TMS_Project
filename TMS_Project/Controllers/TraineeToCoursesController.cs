@@ -64,15 +64,15 @@ namespace TMS_Project.Controllers
 		public ActionResult Create(TraineeToCourse traineeToCourse)
 		{
 
-			var checkTraineeAndCourseExist = _context.TraineeToCourses.Any(
+			/*var checkTraineeAndCourseExist = _context.TraineeToCourses.SingleOrDefault(
 									c => c.CourseId == traineeToCourse.CourseId &&
 									c.TraineeId == traineeToCourse.TraineeId);
 
-			if (checkTraineeAndCourseExist)
+			if (checkTraineeAndCourseExist != null)
 			{
 				ModelState.AddModelError("Email", "Course Name or Trainee Already Exists.");
 				return View();
-			}
+			}*/
 
 			var newTraineeToCourse = new TraineeToCourse
 			{

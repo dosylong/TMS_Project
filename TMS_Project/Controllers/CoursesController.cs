@@ -51,17 +51,15 @@ namespace TMS_Project.Controllers
 		{
 			if (!ModelState.IsValid)
 			{
-				return View();
+				return View("~/Views/CheckErrors/CheckNull.cshtml");
 			}
 
-			/*Check if Course Name existed or not
-			var isCourseNameExist = _context.Courses.Any(
-				c => c.Name.Contains(course.Name));
-
-			if (isCourseNameExist)
+			//Check if Course Name existed or not
+			if (_context.Courses.Any(c => c.Name == course.Name &&
+										  c.CategoryId == course.CategoryId))
 			{
-				ModelState.AddModelError("Name", "Course Name Already Exists.");
-			}*/
+				return View("~/Views/CheckConditions/CheckExist.cshtml");
+			}
 
 			var newCourse = new Course
 			{
@@ -73,7 +71,7 @@ namespace TMS_Project.Controllers
 			_context.Courses.Add(newCourse);
 			_context.SaveChanges();
 
-			return RedirectToAction("Index");
+			return View("~/Views/CheckConditions/CreateSuccess.cshtml");
 		}
 
 		// Edit Course (Courses/Edit/Id/...)
@@ -112,16 +110,6 @@ namespace TMS_Project.Controllers
 			{
 				return HttpNotFound();
 			}
-
-			/*Check if Topic Name existed or not
-			var isTopicNameExist = _context.Topics.Any(
-				c => c.Name.Contains(topic.Name));
-
-			if (isTopicNameExist)
-			{
-				ModelState.AddModelError("Name", "Topic Name Already Exists.");
-				return RedirectToAction("Index");
-			}*/
 
 			courseInDb.Name = course.Name;
 			courseInDb.Descriptions = course.Descriptions;

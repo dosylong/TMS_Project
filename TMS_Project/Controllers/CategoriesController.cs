@@ -43,17 +43,13 @@ namespace TMS_Project.Controllers
 		{
 			if (!ModelState.IsValid)
 			{
-				return View();
+				return View("~/Views/CheckConditions/NullCategory.cshtml");
 			}
 
 			//Check if Category Name existed or not
-			var isCategoryNameExist = _context.Categories.Any(
-				c => c.Name.Contains(category.Name));
-
-			if (isCategoryNameExist)
+			if (_context.Categories.Any(c => c.Name.Contains(category.Name)))
 			{
-				ModelState.AddModelError("Name", "Category Name Already Exists.");
-				return View();
+				return View("~/Views/CheckConditions/CreateCategoryExist.cshtml");
 			}
 
 			var newCategory = new Category
@@ -64,7 +60,7 @@ namespace TMS_Project.Controllers
 
 			_context.Categories.Add(newCategory);
 			_context.SaveChanges();
-			return RedirectToAction("Index");
+			return View("~/Views/CheckConditions/CreateCategorySuccess.cshtml");
 
 
 		}
@@ -90,18 +86,14 @@ namespace TMS_Project.Controllers
 
 			if (!ModelState.IsValid)
 			{
-				return View();
+				return View("~/Views/CheckConditions/NullCategory.cshtml");
 			}
 
-			/*Check if Category Name existed or not
-			var isCategoryNameExist = _context.Categories.Any(
-				c => c.Name.Contains(category.Name));
-
-			if (isTopicNameExist)
+			//Check if Category Name existed or not
+			if (_context.Categories.Any(c => c.Name.Contains(category.Name)))
 			{
-				ModelState.AddModelError("Name", "Category Name Already Exists.");
-				return RedirectToAction("Index");
-			}*/
+				return View("~/Views/CheckConditions/EditCategoryExist.cshtml");
+			}
 
 			var categoryInDb = _context.Categories.SingleOrDefault(c => c.Id == category.Id);
 
@@ -111,7 +103,7 @@ namespace TMS_Project.Controllers
 			}
 
 			_context.SaveChanges();
-			return RedirectToAction("Index");
+			return View("~/Views/CheckConditions/EditCategorySuccess.cshtml");
 		}
 
 		// Delete Category (Categories/Delete/Id/...)

@@ -52,18 +52,18 @@ namespace TMS_Project.Controllers
 		{
 			if (!ModelState.IsValid)
 			{
-				return View();
+				return View("~/Views/CheckErrors/CheckNull.cshtml");
 			}
 
-			/*Check if Topic Name existed or not
-			var isTopicNameExist = _context.Topics.Any(
-				c => c.Name.Contains(topic.Name));
+			//Check if Topic Name existed or not
+			var checkTopicAndCourse = _context.Topics.Any(
+				c => c.Name == topic.Name &&
+					 c.CourseId == topic.CourseId);
 
-			if (isTopicNameExist)
+			if (checkTopicAndCourse)
 			{
-				ModelState.AddModelError("Name", "Topic Name Already Exists.");
-				return RedirectToAction("Index");
-			}*/
+				return View("~/Views/CheckConditions/CheckExist.cshtml");
+			}
 
 			var newTopic = new Topic
 			{
@@ -75,7 +75,7 @@ namespace TMS_Project.Controllers
 			_context.Topics.Add(newTopic);
 			_context.SaveChanges();
 
-			return RedirectToAction("Index");
+			return View("~/Views/CheckConditions/Success.cshtml");
 		}
 
 		// Edit Topic (Topics/Edit/Id/...)
