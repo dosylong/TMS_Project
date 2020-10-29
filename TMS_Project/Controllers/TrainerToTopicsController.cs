@@ -66,6 +66,18 @@ namespace TMS_Project.Controllers
 		[Authorize(Roles = "TrainingStaff")]
 		public ActionResult Create(TrainerToTopic trainerToTopic)
 		{
+			if (!ModelState.IsValid)
+			{
+				return View("~/Views/CheckTrainerToTopicConditions/AssignNullTrainerTopic.cshtml");
+			}
+
+			//Check if Trainer Name or Topic Name existed or not
+			if (_context.TrainerToTopics.Any(c => c.TrainerId == trainerToTopic.TrainerId &&
+												  c.TopicId == trainerToTopic.TopicId))
+			{
+				return View("~/Views/CheckTrainerToTopicConditions/AssignExistTrainerTopic.cshtml");
+			}
+
 			var newTrainerToTopic = new TrainerToTopic
 			{
 				TrainerId = trainerToTopic.TrainerId,
@@ -74,7 +86,7 @@ namespace TMS_Project.Controllers
 
 			_context.TrainerToTopics.Add(newTrainerToTopic);
 			_context.SaveChanges();
-			return RedirectToAction("Index");
+			return View("~/Views/CheckTrainerToTopicConditions/AssignTrainerTopicSuccess.cshtml");
 		}
 
 		[HttpGet]

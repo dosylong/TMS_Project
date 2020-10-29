@@ -64,15 +64,17 @@ namespace TMS_Project.Controllers
 		public ActionResult Create(TraineeToCourse traineeToCourse)
 		{
 
-			/*var checkTraineeAndCourseExist = _context.TraineeToCourses.SingleOrDefault(
-									c => c.CourseId == traineeToCourse.CourseId &&
-									c.TraineeId == traineeToCourse.TraineeId);
-
-			if (checkTraineeAndCourseExist != null)
+			if (!ModelState.IsValid)
 			{
-				ModelState.AddModelError("Email", "Course Name or Trainee Already Exists.");
-				return View();
-			}*/
+				return View("~/Views/CheckTraineeToCourseConditions/AssignNullTraineeCourse.cshtml");
+			}
+
+			//Check if Trainee Name or Course Name existed or not
+			if (_context.TraineeToCourses.Any(c => c.TraineeId == traineeToCourse.TraineeId &&
+												   c.CourseId == traineeToCourse.CourseId))
+			{
+				return View("~/Views/CheckTraineeToCourseConditions/AssignExistTraineeCourse.cshtml");
+			}
 
 			var newTraineeToCourse = new TraineeToCourse
 			{
@@ -82,7 +84,7 @@ namespace TMS_Project.Controllers
 
 			_context.TraineeToCourses.Add(newTraineeToCourse);
 			_context.SaveChanges();
-			return RedirectToAction("Index");
+			return View("~/Views/CheckTraineeToCourseConditions/AssignTraineeCourseSuccess.cshtml");
 		}
 
 		[HttpGet]

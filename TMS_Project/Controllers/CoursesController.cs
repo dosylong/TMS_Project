@@ -51,14 +51,14 @@ namespace TMS_Project.Controllers
 		{
 			if (!ModelState.IsValid)
 			{
-				return View("~/Views/CheckErrors/CheckNull.cshtml");
+				return View("~/Views/CheckCourseConditions/CreateNullCourse.cshtml");
 			}
 
 			//Check if Course Name existed or not
 			if (_context.Courses.Any(c => c.Name == course.Name &&
 										  c.CategoryId == course.CategoryId))
 			{
-				return View("~/Views/CheckConditions/CheckExist.cshtml");
+				return View("~/Views/CheckCourseConditions/CreateExistCourse.cshtml");
 			}
 
 			var newCourse = new Course
@@ -71,7 +71,7 @@ namespace TMS_Project.Controllers
 			_context.Courses.Add(newCourse);
 			_context.SaveChanges();
 
-			return View("~/Views/CheckConditions/CreateSuccess.cshtml");
+			return View("~/Views/CheckCourseConditions/CreateCourseSuccess.cshtml");
 		}
 
 		// Edit Course (Courses/Edit/Id/...)
@@ -101,7 +101,7 @@ namespace TMS_Project.Controllers
 		{
 			if (!ModelState.IsValid)
 			{
-				return View();
+				return View("~/Views/CheckCourseConditions/EditNullCourse.cshtml");
 			}
 
 			var courseInDb = _context.Courses.SingleOrDefault(co => co.Id == course.Id);
@@ -116,7 +116,7 @@ namespace TMS_Project.Controllers
 			courseInDb.CategoryId = course.CategoryId;
 
 			_context.SaveChanges();
-			return RedirectToAction("Index");
+			return View("~/Views/CheckCourseConditions/EditCourseSuccess.cshtml");
 		}
 
 		// Delete Course (Courses/Delete/Id/...)

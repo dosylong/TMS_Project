@@ -57,6 +57,16 @@ namespace TMS_Project.Controllers
 		[Authorize(Roles = "TrainingStaff")]
 		public ActionResult Create(TrainerProfile trainerProfile)
 		{
+			if (!ModelState.IsValid)
+			{
+				return View("~/Views/CheckTrainerProfileConditions/CreateNullTrainerProfile.cshtml");
+			}
+
+			//Check if Trainer Profile existed or not
+			if (_context.TrainerProfiles.Any(c => c.TrainerId == trainerProfile.TrainerId))
+			{
+				return View("~/Views/CheckTrainerProfileConditions/CreateExistTrainerProfile.cshtml");
+			}
 			var getTrainerProfile = new TrainerProfile
 			{
 				TrainerId = trainerProfile.TrainerId,
@@ -69,7 +79,7 @@ namespace TMS_Project.Controllers
 
 			_context.TrainerProfiles.Add(getTrainerProfile);
 			_context.SaveChanges();
-			return RedirectToAction("Index");
+			return View("~/Views/CheckTrainerProfileConditions/CreateTrainerProfileSuccess.cshtml");
 		}
 
 		[HttpGet]

@@ -52,17 +52,14 @@ namespace TMS_Project.Controllers
 		{
 			if (!ModelState.IsValid)
 			{
-				return View("~/Views/CheckErrors/CheckNull.cshtml");
+				return View("~/Views/CheckTopicConditions/CreateNullTopic.cshtml");
 			}
 
 			//Check if Topic Name existed or not
-			var checkTopicAndCourse = _context.Topics.Any(
-				c => c.Name == topic.Name &&
-					 c.CourseId == topic.CourseId);
-
-			if (checkTopicAndCourse)
+			if (_context.Topics.Any(c => c.Name == topic.Name &&
+										  c.CourseId == topic.CourseId))
 			{
-				return View("~/Views/CheckConditions/CheckExist.cshtml");
+				return View("~/Views/CheckTopicConditions/CreateExistTopic.cshtml");
 			}
 
 			var newTopic = new Topic
@@ -75,7 +72,7 @@ namespace TMS_Project.Controllers
 			_context.Topics.Add(newTopic);
 			_context.SaveChanges();
 
-			return View("~/Views/CheckConditions/Success.cshtml");
+			return View("~/Views/CheckTopicConditions/CreateTopicSuccess.cshtml");
 		}
 
 		// Edit Topic (Topics/Edit/Id/...)
@@ -103,6 +100,11 @@ namespace TMS_Project.Controllers
 		[Authorize(Roles = "TrainingStaff")]
 		public ActionResult Edit(Topic topic)
 		{
+			if (!ModelState.IsValid)
+			{
+				return View("~/Views/CheckTopicConditions/EditNullTopic.cshtml");
+			}
+
 			var topicInDb = _context.Topics.SingleOrDefault(t => t.Id == topic.Id);
 
 			if (topicInDb == null)
@@ -110,22 +112,12 @@ namespace TMS_Project.Controllers
 				return HttpNotFound();
 			}
 
-			/*Check if Topic Name existed or not
-			var isTopicNameExist = _context.Topics.Any(
-				c => c.Name.Contains(topic.Name));
-
-			if (isTopicNameExist)
-			{
-				ModelState.AddModelError("Name", "Topic Name Already Exists.");
-				return RedirectToAction("Index");
-			}*/
-
 			topicInDb.Name = topic.Name;
 			topicInDb.Descriptions = topic.Descriptions;
 			topicInDb.CourseId = topic.CourseId;
 
 			_context.SaveChanges();
-			return RedirectToAction("Index");
+			return View("~/Views/CheckTopicConditions/EditTopicSuccess.cshtml");
 		}
 
 		// Delete Topic (Topics/Delete/Id/...)

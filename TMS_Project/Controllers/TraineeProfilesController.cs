@@ -57,6 +57,17 @@ namespace TMS_Project.Controllers
 		[Authorize(Roles = "TrainingStaff")]
 		public ActionResult Create(TraineeProfile traineeProfile)
 		{
+			if (!ModelState.IsValid)
+			{
+				return View("~/Views/CheckTraineeProfileConditions/CreateNullTraineeProfile.cshtml");
+			}
+
+			//Check if Trainee Profile existed or not
+			if (_context.TraineeToCourses.Any(c => c.TraineeId == traineeProfile.TraineeId))
+			{
+				return View("~/Views/CheckTraineeProfileConditions/CreateExistTraineeProfile.cshtml");
+			}
+
 			var getTraineeProfile = new TraineeProfile
 			{
 				TraineeId = traineeProfile.TraineeId,
@@ -125,7 +136,7 @@ namespace TMS_Project.Controllers
 			traineeProfileInDb.Location = traineeProfile.Location;
 
 			_context.SaveChanges();
-			return RedirectToAction("Index");
+			return View("~/Views/CheckTraineeProfileConditions/EditTraineeProfileSucess.cshtml");
 		}
 
 		[HttpGet]

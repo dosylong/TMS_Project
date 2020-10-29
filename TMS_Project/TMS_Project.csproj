@@ -239,6 +239,10 @@
     <Compile Include="Migrations\202010271338103_AddTraineeToCourse1.designer.cs">
       <DependentUpon>202010271338103_AddTraineeToCourse1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010281204538_AddTrainerToTopic1.cs" />
+    <Compile Include="Migrations\202010281204538_AddTrainerToTopic1.designer.cs">
+      <DependentUpon>202010281204538_AddTrainerToTopic1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -264,7 +268,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\bootstrap2.css" />
+    <Content Include="Content\bootstrap1.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -345,11 +349,35 @@
     <Content Include="Views\TraineeProfiles\Mine.cshtml" />
     <Content Include="Views\TrainerProfiles\Mine.cshtml" />
     <Content Include="Views\TrainerToTopics\Mine.cshtml" />
-    <Content Include="Views\CheckConditions\CreateCategoryExist.cshtml" />
-    <Content Include="Views\CheckConditions\NullCategory.cshtml" />
-    <Content Include="Views\CheckConditions\CreateCategorySuccess.cshtml" />
-    <Content Include="Views\CheckConditions\EditCategorySuccess.cshtml" />
-    <Content Include="Views\CheckConditions\EditCategoryExist.cshtml" />
+    <Content Include="Views\CheckCategoryConditions\CreateExistCategory.cshtml" />
+    <Content Include="Views\CheckCategoryConditions\CreateNullCategory.cshtml" />
+    <Content Include="Views\CheckCategoryConditions\CreateCategorySuccess.cshtml" />
+    <Content Include="Views\CheckCategoryConditions\EditCategorySuccess.cshtml" />
+    <Content Include="Views\CheckCategoryConditions\EditExistCategory.cshtml" />
+    <Content Include="Views\CheckCourseConditions\CreateNullCourse.cshtml" />
+    <Content Include="Views\CheckCourseConditions\CreateExistCourse.cshtml" />
+    <Content Include="Views\CheckCourseConditions\CreateCourseSuccess.cshtml" />
+    <Content Include="Views\CheckCourseConditions\EditCourseSuccess.cshtml" />
+    <Content Include="Views\CheckCourseConditions\EditNullCourse.cshtml" />
+    <Content Include="Views\CheckTopicConditions\CreateNullTopic.cshtml" />
+    <Content Include="Views\CheckTopicConditions\CreateExistTopic.cshtml" />
+    <Content Include="Views\CheckTopicConditions\CreateTopicSuccess.cshtml" />
+    <Content Include="Views\CheckTopicConditions\EditTopicSuccess.cshtml" />
+    <Content Include="Views\CheckTopicConditions\EditNullTopic.cshtml" />
+    <Content Include="Views\CheckTraineeToCourseConditions\AssignExistTraineeCourse.cshtml" />
+    <Content Include="Views\CheckTraineeToCourseConditions\AssignNullTraineeCourse.cshtml" />
+    <Content Include="Views\CheckTraineeToCourseConditions\AssignTraineeCourseSuccess.cshtml" />
+    <Content Include="Views\CheckTrainerToTopicConditions\AssignExistTrainerTopic.cshtml" />
+    <Content Include="Views\CheckTrainerToTopicConditions\AssignNullTrainerTopic.cshtml" />
+    <Content Include="Views\CheckTrainerToTopicConditions\AssignTrainerTopicSuccess.cshtml" />
+    <Content Include="Views\CheckTraineeProfileConditions\CreateNullTraineeProfile.cshtml" />
+    <Content Include="Views\CheckTraineeProfileConditions\CreateExistTraineeProfile.cshtml" />
+    <Content Include="Views\CheckTraineeProfileConditions\CreateTraineeProfileSuccess.cshtml" />
+    <Content Include="Views\CheckTrainerProfileConditions\CreateNullTrainerProfile.cshtml" />
+    <Content Include="Views\CheckTrainerProfileConditions\CreateExistTrainerProfile.cshtml" />
+    <Content Include="Views\CheckTrainerProfileConditions\CreateTrainerProfileSuccess.cshtml" />
+    <Content Include="Views\CheckTraineeProfileConditions\EditTraineeProfileSuccess.cshtml" />
+    <Content Include="Views\CheckTrainerProfileConditions\EditTrainerProfileSuccess.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -409,6 +437,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010271338103_AddTraineeToCourse1.resx">
       <DependentUpon>202010271338103_AddTraineeToCourse1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010281204538_AddTrainerToTopic1.resx">
+      <DependentUpon>202010281204538_AddTrainerToTopic1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

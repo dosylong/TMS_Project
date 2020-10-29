@@ -8,18 +8,24 @@
 @using (Html.BeginForm("Index", "Courses", FormMethod.Get))
 {
 	<p>
-		<input type="search" placeholder="Enter Course Name or Category Name"
-			   name="searchCourse" style="width:255px; height:33px;" />
+		<input type="search" class="form-control" placeholder="Enter Course Name or Category Name"
+			   name="searchCourse" style="width:271px; height:33px; display:inline-block;" />
 
-		<input type="submit" value="Search" class="btn btn-primary" />
+		<input type="submit" value="Search" class="btn btn-info" />
 
-		@Html.ActionLink("View all Courses", "Index", "Courses")
+		<a class="btn btn-info" href="~/Courses/Index" role="button">
+			View all Courses
+		</a>
 	</p>
 }
 
 @if (Request.IsAuthenticated && User.IsInRole("TrainingStaff"))
 {
-	@Html.ActionLink("Create a new Course", "Create")
+<div>
+	<a class="btn btn-info" href="~/Courses/Create" style="margin-bottom:10px;" role="button">
+		Create new Course
+	</a>
+</div>
 }
 
 <table class="table table-striped">

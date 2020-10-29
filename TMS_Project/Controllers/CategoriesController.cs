@@ -43,13 +43,13 @@ namespace TMS_Project.Controllers
 		{
 			if (!ModelState.IsValid)
 			{
-				return View("~/Views/CheckConditions/NullCategory.cshtml");
+				return View("~/Views/CheckCategoryConditions/CreateNullCategory.cshtml");
 			}
 
 			//Check if Category Name existed or not
 			if (_context.Categories.Any(c => c.Name.Contains(category.Name)))
 			{
-				return View("~/Views/CheckConditions/CreateCategoryExist.cshtml");
+				return View("~/Views/CheckCategoryConditions/CreateExistCategory.cshtml");
 			}
 
 			var newCategory = new Category
@@ -60,7 +60,7 @@ namespace TMS_Project.Controllers
 
 			_context.Categories.Add(newCategory);
 			_context.SaveChanges();
-			return View("~/Views/CheckConditions/CreateCategorySuccess.cshtml");
+			return View("~/Views/CheckCategoryConditions/CreateCategorySuccess.cshtml");
 
 
 		}
@@ -86,14 +86,14 @@ namespace TMS_Project.Controllers
 
 			if (!ModelState.IsValid)
 			{
-				return View("~/Views/CheckConditions/NullCategory.cshtml");
+				return View();
 			}
 
-			//Check if Category Name existed or not
+			/*//Check if Category Name existed or not
 			if (_context.Categories.Any(c => c.Name.Contains(category.Name)))
 			{
-				return View("~/Views/CheckConditions/EditCategoryExist.cshtml");
-			}
+				return View("~/Views/CheckCategoryConditions/EditExistCategory.cshtml");
+			}*/
 
 			var categoryInDb = _context.Categories.SingleOrDefault(c => c.Id == category.Id);
 
@@ -102,8 +102,11 @@ namespace TMS_Project.Controllers
 				return HttpNotFound();
 			}
 
+			categoryInDb.Name = category.Name;
+			categoryInDb.Descriptions = category.Descriptions;
+
 			_context.SaveChanges();
-			return View("~/Views/CheckConditions/EditCategorySuccess.cshtml");
+			return View("~/Views/CheckCategoryConditions/EditCategorySuccess.cshtml");
 		}
 
 		// Delete Category (Categories/Delete/Id/...)
