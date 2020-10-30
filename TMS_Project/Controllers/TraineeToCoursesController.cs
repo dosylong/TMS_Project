@@ -17,6 +17,7 @@ namespace TMS_Project.Controllers
 		}
 
 		[HttpGet]
+		[Authorize(Roles = "TrainingStaff")]
 		// GET: TraineeToCourses
 		public ActionResult Index(string searchTrainee)
 		{
