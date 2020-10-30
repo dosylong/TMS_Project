@@ -8,18 +8,24 @@
 @using (Html.BeginForm("Index", "TraineeProfiles", FormMethod.Get))
 {
 	<p>
-		<input type="search" placeholder="Enter Trainee Email or UserName"
-			   name="searchTraineeProfile" style="width:225px; height:33px;" />
+		<input type="search" class="form-control" placeholder="Enter Trainee Email or UserName"
+			   name="searchTraineeProfile" style="width:241px; height:33px; display:inline-block;" />
 
-		<input type="submit" value="Search" class="btn btn-primary" />
+		<input type="submit" value="Search" class="btn btn-info" />
 
-		@Html.ActionLink("View all Trainee", "Index", "TraineeProfiles")
+		<a class="btn btn-info" href="~/TraineeProfiles/Index" role="button">
+			View all Trainee Profiles
+		</a>
 	</p>
 }
 
 @if (Request.IsAuthenticated && User.IsInRole("TrainingStaff"))
 {
-	@Html.ActionLink("Add Trainee Profile", "Create")
+<div>
+	<a class="btn btn-info" href="~/TraineeProfiles/Create" style="margin-bottom:10px;" role="button">
+		Create Trainee Profile
+	</a>
+</div>
 }
 
 <table class="table table-striped">
@@ -27,7 +33,7 @@
 		<th>Id</th>
 		<th>Trainee Email</th>
 		<th>Trainee UserName</th>
-		<th>Trainee FullName</th>
+		<th>Trainee Full Name</th>
 		<th>Education</th>
 		<th>Programming Language</th>
 		<th>Experience Details</th>

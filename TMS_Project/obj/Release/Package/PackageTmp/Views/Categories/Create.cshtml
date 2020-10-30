@@ -7,7 +7,6 @@
 
 @using (Html.BeginForm("Create", "Categories", FormMethod.Post))
 {
-
 	<div class="form-group">
 		@Html.LabelFor(c => c.Name)
 		@Html.TextBoxFor(c => c.Name, new { @class = "form-control" })

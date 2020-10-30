@@ -8,18 +8,24 @@
 @using (Html.BeginForm("Index", "TrainerProfiles", FormMethod.Get))
 {
 	<p>
-		<input type="search" placeholder="Enter Trainer Email or UserName"
-			   name="searchTrainerProfile" style="width:225px; height:33px;" />
+		<input type="search" class="form-control" placeholder="Enter Trainer Email or UserName"
+			   name="searchTrainerProfile" style="width:238px; height:33px; display:inline-block;" />
 
-		<input type="submit" value="Search" class="btn btn-primary" />
+		<input type="submit" value="Search" class="btn btn-info" />
 
-		@Html.ActionLink("View all Trainer", "Index", "TrainerProfiles")
+		<a class="btn btn-info" href="~/TrainerProfiles/Index" role="button">
+			View all Trainers
+		</a>
 	</p>
 }
 
 @if (Request.IsAuthenticated && User.IsInRole("TrainingStaff"))
 {
-	@Html.ActionLink("Add Trainer Profile", "Create")
+<div>
+	<a class="btn btn-info" href="~/TrainerProfiles/Create" style="margin-bottom:10px;" role="button">
+		Create Trainer Profile
+	</a>
+</div>
 }
 
 <table class="table table-striped">

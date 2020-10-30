@@ -8,44 +8,49 @@
 @using (Html.BeginForm("Index", "Categories", FormMethod.Get))
 {
 <p>
-	<input type="search" placeholder="Enter Category Name"
-		   name="searchCategory" style="width:190px; height:33px;" />
+	<input type="search" class="form-control" placeholder="Enter Category Name"
+		   name="searchCategory" style="width:190px; height:35px; display:inline-block;" />
 
-	<input type="submit" value="Search" class="btn btn-primary" />
+	<input type="submit" value="Search" class="btn btn-info" />
 
-	@Html.ActionLink("View all Category", "Index", "Categories")
+	 <a class="btn btn-info" href="~/Categories/Index" role="button">
+		 View all Categories
+	 </a>
 
 </p>
 }
 
 @if (Request.IsAuthenticated && User.IsInRole("TrainingStaff"))
 {
-	@Html.ActionLink("Create a new Category", "Create")
+	<div>
+		<a class="btn btn-info" href="~/Categories/Create" style="margin-bottom:10px;" role="button">
+		Create new Category
+		</a>
+	</div>
 }
 
 <table class="table table-striped">
-	<tr>
-		<th>Category Id</th>
-		<th>Category Name</th>
-		<th>Category Descriptions</th>
-		@if (Request.IsAuthenticated && User.IsInRole("TrainingStaff"))
-		{
-			<th>Edit</th>
-			<th>Delete</th>
-		}
-	</tr>
-
-	@foreach (var category in Model)
-	{
 		<tr>
-			<td>@category.Id</td>
-			<td>@category.Name</td>
-			<td>@category.Descriptions</td>
+			<th scope="col">Category Id</th>
+			<th scope="col">Category Name</th>
+			<th scope="col">Category Descriptions</th>
 			@if (Request.IsAuthenticated && User.IsInRole("TrainingStaff"))
 			{
-				<td>@Html.ActionLink("Edit this category", "Edit", new { id = category.Id })</td>
-				<td>@Html.ActionLink("Delete this category", "Delete", new { id = category.Id })</td>
+				<th>Edit</th>
+				<th>Delete</th>
 			}
 		</tr>
-	}
+		@foreach (var category in Model)
+		{
+			<tr>
+				<td>@category.Id</td>
+				<td>@category.Name</td>
+				<td>@category.Descriptions</td>
+				@if (Request.IsAuthenticated && User.IsInRole("TrainingStaff"))
+				{
+					<td>@Html.ActionLink("Edit", "Edit", new { id = category.Id })</td>
+					<td>@Html.ActionLink("Delete", "Delete", new { id = category.Id })</td>
+				}
+			</tr>
+		}
 </table>
