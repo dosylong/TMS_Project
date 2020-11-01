@@ -378,6 +378,7 @@
     <Content Include="Views\CheckTrainerProfileConditions\CreateTrainerProfileSuccess.cshtml" />
     <Content Include="Views\CheckTraineeProfileConditions\EditTraineeProfileSuccess.cshtml" />
     <Content Include="Views\CheckTrainerProfileConditions\EditTrainerProfileSuccess.cshtml" />
+    <Content Include="Views\CheckTraineeProfileConditions\EditNullTraineeProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -118,7 +118,7 @@ namespace TMS_Project.Controllers
 		{
 			if (!ModelState.IsValid)
 			{
-				return View();
+				return View("~/Views/CheckTraineeProfileConditions/EditNullTraineeProfile.cshtml");
 			}
 
 			var traineeProfileInDb = _context.TraineeProfiles.SingleOrDefault(trdb => trdb.Id == traineeProfile.Id);
@@ -136,7 +136,7 @@ namespace TMS_Project.Controllers
 			traineeProfileInDb.Location = traineeProfile.Location;
 
 			_context.SaveChanges();
-			return View("~/Views/CheckTraineeProfileConditions/EditTraineeProfileSucess.cshtml");
+			return View("~/Views/CheckTraineeProfileConditions/EditTraineeProfileSuccess.cshtml");
 		}
 
 		[HttpGet]
